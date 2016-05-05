@@ -11,13 +11,19 @@ The permission to run the `admin-helper` is given through the [sudoers](https://
 
 ## Intial Setup
 
-* Download and open the `delayed-admin` directory.
-* Open the `delayed-admin.sudoers` in an editor and change 
+Download and open the `delayed-admin` directory.
+
+Open the `delayed-admin.sudoers` in an editor and change 
+
 ``` User_Alias DELAYED_ADMINS = 
 ```
+
+to
+
 ``` User_Alias DELAYED_ADMINS = myadmin
 ```
-  Where `myadmin` is the name of the user for whom you want to (temporarily) drop admin privilages.
+
+Where `myadmin` is the name of the user for whom you want to (temporarily) drop admin privilages.
 
 Now open the `delayed-admin` directory in the terminal (from an admin account) and type -
 
@@ -34,7 +40,7 @@ sudo cp admin-helper /usr/local/bin/admin-helper
 If the current user is in the `admin` group, then the user will be removed from the group. If not, then the user will be given admin privilages after a delay 20 minutes
 
 ## For OS X users
-If `myadmin` is already an Admin account (which it will be most probably), then you might also need to - 
+If `myadmin` is already an Admin account (which it most probably is), then you might also need to - 
 
 * Create a new admin account if there isn't one other than `myadmin`.
 * Login to the other  admin account and make `myadmin` a standard account (by unchecking "Allow user to administer this computer".

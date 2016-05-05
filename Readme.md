@@ -1,7 +1,7 @@
 # Delayed Admin
 
 ## What is it?
-This is a tool for administrators to drop privilages to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com) on themselves!
+This is a tool for administrators to drop admin privilages - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com) on themselves!
 
 ## Intial Setup
 

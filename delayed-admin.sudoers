@@ -1,4 +1,4 @@
-User_Alias DELAYED_ADMINS = 
-Cmnd_Alias ADMIN_HELPERS = /sbin/admin-helper
+User_Alias DELAYED_ADMINS =
+Cmnd_Alias ADMIN_HELPERS = /usr/local/bin/admin-helper
 
 DELAYED_ADMINS ALL=(root) ADMIN_HELPERS

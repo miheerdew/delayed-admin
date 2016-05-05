@@ -11,5 +11,6 @@ if groups $username | grep -q -w admin;
     else
         echo "'$username' is not an admin"
         echo "Sleeping for $delay seconds staring from $(date '+%D %T')" 
+        sleep "$delay"
         dscl . -append /Groups/admin GroupMembership "$username"
 fi

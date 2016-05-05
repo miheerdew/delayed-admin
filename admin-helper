@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e -u
+username=$SUDO_USER
+delay=$((60*2)) #2 minutes
+
+if groups $username | grep -q -w admin;
+    then
+        dscl . -delete /Groups/admin GroupMembership "$username"
+        echo "Removed '$username' from admin"
+    else
+        echo "'$username' is not an admin"
+        echo "Sleeping for $delay seconds staring from $(date '+%D %T')" 
+        dscl . -append /Groups/admin GroupMembership "$username"
+fi

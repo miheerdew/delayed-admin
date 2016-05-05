@@ -35,7 +35,7 @@ sudo cp admin-helper /usr/local/bin/admin-helper
 
 ```sudo admin-helper```
 
-If the current user is in the `admin` group, then the user will be removed from the group. If not, then the user will be given admin privilages after a delay 20 minutes
+If the current user is in the `admin` group, then the user will be instantly removed from the group. If not, then the user will be given admin privilages after a delay 20 minutes
 
 ## For OS X users
 If `myadmin` is already an Admin account (which it most probably is), then you might also need to - 

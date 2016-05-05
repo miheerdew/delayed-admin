@@ -15,13 +15,11 @@ Download and open the `delayed-admin` directory.
 
 Open the `delayed-admin.sudoers` in an editor and change 
 
-``` User_Alias DELAYED_ADMINS = 
-```
+``User_Alias DELAYED_ADMINS =``
 
 to
 
-``` User_Alias DELAYED_ADMINS = myadmin
-```
+``User_Alias DELAYED_ADMINS = myadmin``
 
 Where `myadmin` is the name of the user for whom you want to (temporarily) drop admin privilages.
 

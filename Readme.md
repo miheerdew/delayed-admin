@@ -1,6 +1,6 @@
 # Delayed Admin
 
-A tool for administrators to (temporarily) drop admin privilages - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com) on themselves!
+A tool for administrators to (temporarily) drop admin privilages - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!
 
 Currently it's just tested on my `OS-X El Captain`, but should be extensible to other Unix like systems too.
 

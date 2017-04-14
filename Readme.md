@@ -43,7 +43,7 @@ If `myadmin` is already an Admin account (which it most probably is), then you m
 * Create a new admin account if there isn't one other than `myadmin`.
 * Login to the other  admin account and make `myadmin` a standard account (by unchecking "Allow user to administer this computer".
 
-Just use the `myadmin` account. You can forget the `new-admin` account (for instance - save it's password is a file readable by root only)
+Just use the `myadmin` account. You can forget the `new-admin` account (for instance - save its password is a file readable by root only)
 
 
 

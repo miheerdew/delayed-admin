@@ -9,7 +9,7 @@ The `admin-helper` script adds/removes the user from the `admin` group. Privilag
 
 The permission to run the `admin-helper` is given through the [sudoers](https://www.garron.me/en/linux/visudo-command-sudoers-file-sudo-default-editor.html) mechanism.
 
-## Intial Setup
+## Initial Setup
 
 Download and open the `delayed-admin` directory.
 

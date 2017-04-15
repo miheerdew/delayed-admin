@@ -2,7 +2,7 @@
 
 A tool for administrators to (temporarily) drop admin privilages - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!
 
-Currently it's just tested on my `OS-X El Captain`, but should be extensible to other Unix like systems too.
+Currently it's just works on my `MacOS Sierra`, but should be extensible to other Unix like systems too.
 
 ## How does it work?
 The `admin-helper` script adds/removes the user from the `admin` group. Privilage escalation does not happen instantly but requires a delay of 20min thereby serving as a deterrent.
@@ -10,6 +10,8 @@ The `admin-helper` script adds/removes the user from the `admin` group. Privilag
 The permission to run the `admin-helper` is given through the [sudoers](https://www.garron.me/en/linux/visudo-command-sudoers-file-sudo-default-editor.html) mechanism.
 
 ## Initial Setup
+
+This only needs to be done once.
 
 Download and open the `delayed-admin` directory.
 

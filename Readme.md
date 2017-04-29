@@ -4,6 +4,11 @@ A tool for administrators to (temporarily) drop admin privilages - to use tools 
 
 Currently it's just works on my `MacOS Sierra`, but should be extensible to other Unix like systems too.
 
+## Warning
+This project is still a prototype. Only follow these instructions if you know what you are doing.
+
+There might be a possibility of locking yourself out of admin privilages. To prevent that, keep an aditional administrators access.
+
 ## How does it work?
 The `admin-helper` script adds/removes the user from the `admin` group. Privilage escalation does not happen instantly but requires a delay of 20min thereby serving as a deterrent.
 

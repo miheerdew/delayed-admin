@@ -2,7 +2,9 @@
 
 A tool for administrators to (temporarily) drop admin privilages - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!
 
-Currently it's just works on my `MacOS Sierra`, but should be extensible to other Unix like systems too.
+Currently it just works on my MacOS Sierra, but should be extensible to other Unix like systems too. The aim would be to create a tool like [abmindicate](http://www.pluckeye.net/abmindicate.html) for MacOS/Unix. 
+
+If you have some suggestions for improvement please feel free to open a pull request or send me an email at miheerdew@gmail.com.
 
 ## Warning
 This project is still a prototype. Only follow these instructions if you know what you are doing.
@@ -42,7 +44,7 @@ sudo cp admin-helper /usr/local/bin/admin-helper
 
 ```sudo admin-helper```
 
-If the current user is in the `admin` group, then the user will be instantly removed from the group. If not, then the user will be given admin privilages after a delay 20 minutes
+If the current user is in the `admin` group, then the user will be instantly removed from the group. If not, then the user will be given admin privilages after a delay 20 minutes. You may need to log out, and log in again for changes to take effect.
 
 ## For OS X users
 If `myadmin` is already an Admin account (which it most probably is), then you might also need to - 

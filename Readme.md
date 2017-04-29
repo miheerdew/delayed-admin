@@ -7,7 +7,7 @@ Currently it's just works on my `MacOS Sierra`, but should be extensible to othe
 ## Warning
 This project is still a prototype. Only follow these instructions if you know what you are doing.
 
-There might be a possibility of locking yourself out of admin privilages. To prevent that, keep an aditional administrators access.
+There might be a possibility of locking yourself out of admin privilages. To prevent this, keep an additional administrators access.
 
 ## How does it work?
 The `admin-helper` script adds/removes the user from the `admin` group. Privilage escalation does not happen instantly but requires a delay of 20min thereby serving as a deterrent.

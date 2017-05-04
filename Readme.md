@@ -14,6 +14,8 @@ There might be a possibility of locking yourself out of admin privilages. To pre
 ## How does it work?
 The `admin-helper` script adds/removes the user from the `admin` group. Privilage escalation does not happen instantly but requires a delay of 20min thereby serving as a deterrent.
 
+An analogy would be to think of a refrigerator door that only opens 20min after you tell it too. Would you eat as many (read "more than you should be") of those chocolates as you would if the refigerator door could be opened instantly?
+
 The permission to run the `admin-helper` is given through the [sudoers](https://www.garron.me/en/linux/visudo-command-sudoers-file-sudo-default-editor.html) mechanism.
 
 ## Initial Setup

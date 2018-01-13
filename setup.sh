@@ -1,4 +1,15 @@
-#!/bin/bash -e
+#!/bin/bash
+
+set -e
+
+function log {
+   local msg="$1"
+   if [ $? -gt 0 ]; then
+     echo -e "[\xE2\x9D\x8C] $msg" 1>&2
+   else
+     echo -e "[\xE2\x9C\x94] $msg"
+   fi
+}
 
 case $OSTYPE in
     darwin*) . ./lib/macos.sh
@@ -18,11 +29,16 @@ function install {
     create_group "$GROUP_NAME"
     cp delayed.sh "$DELAYED"
     cp delayed-admin.conf "$CONFIG_FILE"
+    log "Copied $DELAYED and $CONFIG_FILE"
     EDITOR="tee" visudo -f "$SUDOERS_FILE" <delayed-admin.sudoers
+    log "Copied above to sudoers file $SUDOERS_FILE"
 }
 
 function uninstall {
-    rm -f "$SUDOERS_FILE" "$DELAYED" "$CONFIG_FILE"
+    rm -f "$DELAYED" "$CONFIG_FILE"
+    log "Deleted $DELAYED $CONFIG_FILE"
+    rm "$SUDOERS_FILE"
+    log "Deleted sudoers file: $SUDOERS_FILE"
     delete_group "$GROUP_NAME"
 }
 
@@ -33,12 +49,12 @@ fi
 
 case $1 in
     install)
-        echo "Installing delayed-admin"
         install
+        log "Install successful"
         ;;
     uninstall)
-        echo "Uninstalling delayed-admin"
         uninstall
+        log "Uninstall successful"
         ;;
     *)
         echo "Usage: sudo $0 (install|uninstall)"

@@ -2,15 +2,6 @@
 
 set -e
 
-function log {
-   local msg="$1"
-   if [ $? -gt 0 ]; then
-     echo -e "[\xE2\x9D\x8C] $msg" 1>&2
-   else
-     echo -e "[\xE2\x9C\x94] $msg"
-   fi
-}
-
 case $OSTYPE in
     darwin*) . ./lib/macos.sh
              ;;
@@ -24,6 +15,36 @@ readonly GROUP_NAME="delayed-admin"
 readonly SUDOERS_FILE="/etc/sudoers.d/delayed-admin"
 readonly DELAYED="/usr/local/bin/delayed" # Must be the same as specified in sudoers file
 readonly CONFIG_FILE="/etc/delayed-admin.conf" # Must be the same as specified in delayed.sh
+
+function log {
+   local msg="$1"
+   if [ $? -gt 0 ]; then
+     echo -e "[\xE2\x9D\x8C] $msg" 1>&2
+   else
+     echo -e "[\xE2\x9C\x94] $msg"
+   fi
+}
+
+function create_group {
+    local grp="$1"
+    if gexists "$grp"; then
+	log "Group $grp already exists"
+    else
+        gadd "$grp"
+	log "Created group $grp"
+    fi
+}
+
+function delete_group {
+    local grp="$1"
+    if gexists "$grp"; then
+	gdel "$grp"
+	log "Deleted group $grp"
+    else
+	log "Group $grp does not exist. Doing nothing."
+    fi
+}
+
 
 function install {
     create_group "$GROUP_NAME"

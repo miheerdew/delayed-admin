@@ -1,60 +1,50 @@
 # Delayed Admin
 
-A tool for administrators to (temporarily) drop admin privilages - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!
+A tool for administrators to (temporarily) drop admin privileges - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!
 
 Currently it just works on my MacOS Sierra, but should be extensible to other Unix like systems too. The aim would be to create a tool like [abmindicate](http://www.pluckeye.net/abmindicate.html) for MacOS/Unix. 
 
-If you have some suggestions for improvement please feel free to open a pull request or send me an email at miheerdew@gmail.com.
+Feel free to open a pull request if you have any suggestions/feedback.
 
 ## Warning
-This project is still a prototype. Only follow these instructions if you know what you are doing.
-
-There might be a possibility of locking yourself out of admin privilages. To prevent this, keep an additional administrators access.
+This project is still a prototype. Only follow these instructions if you know what you are doing. There might be a possibility of locking yourself out of admin privilages. To prevent this, keep an additional administrators access.
 
 ## How does it work?
-The `admin-helper` script adds/removes the user from the `admin` group. Privilage escalation does not happen instantly but requires a delay of 20min thereby serving as a deterrent.
 
-The permission to run the `admin-helper` is given through the [sudoers](https://www.garron.me/en/linux/visudo-command-sudoers-file-sudo-default-editor.html) mechanism.
+### First an analogy
+Say you have a box containing an endless supply of candies, and that lately you have been eating lot more candy than you should be. After all, whenever you have an impulse to eat candy, it is so easy to just open the box and grab one. It's so hard to fight the craving! Now imagine instead that the box had a mechanism that ensures that it only opens 20min after you tell it to. Then it would be so much easier to resist the temptation of eating the candy (becuse even though the craving is there, there is nothing you can do about it, at least until the next 20min).
 
-An analogy would be to think of a refrigerator door that only opens 20min after you tell it too. Would you eat as many (read "more than you should be") of those chocolates as you would if the refigerator door could be opened instantly?
+This is the principle Delayed-Admin is based upon. It is for users who don't want the candy-box (administrator access) to instantly open whenever desired, but still not be sealed off completely. Why would one want to do this? That is because many restrictions can be set (using admin access) that cannot be undone without it.
 
-## Initial Setup
+### The technical bit
 
-This only needs to be done once.
+On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delay.conf`) and then runs the command specified in the argument as root.
 
-Download and open the `delayed-admin` directory.
 
-Open the `delayed-admin.sudoers` in an editor and change 
+## Installation 
+```
+sudo setup.sh install
+sudo dseditgroup -o edit -a "$USER" -t user delayed-admin
+```
 
-``User_Alias DELAYED_ADMINS =``
-
-to
-
-``User_Alias DELAYED_ADMINS = myadmin``
-
-Where `myadmin` is the name of the user for whom you want to (temporarily) drop admin privilages.
-
-Now open the `delayed-admin` directory in the terminal (from an admin account) and type -
+## Uninstall
+Before you uninstall, first ensure that you have root access.
 
 ```
-sudo mkdir -p /private/etc/sudoers.d/
-EDITOR="cp delayed-admin.sudoers" sudo visudo -f /private/etc/sudoers.d/delayed-admin
-sudo cp admin-helper /usr/local/bin/admin-helper
+sudo setup.sh uninstall
 ```
 
 ## Usage
 
-```sudo admin-helper```
-
-If the current user is in the `admin` group, then the user will be instantly removed from the group. If not, then the user will be given admin privilages after a delay 20 minutes. You may need to log out, and log in again for changes to take effect.
+`sudo delayed` or `sudo delayed whoami`
 
 ## For OS X users
 If `myadmin` is already an Admin account (which it most probably is), then you might also need to - 
 
 * Create a new admin account if there isn't one other than `myadmin`.
-* Login to the other  admin account and make `myadmin` a standard account (by unchecking "Allow user to administer this computer".
+* Login to the other  admin account and make `myadmin` a standard account (by un-checking "Allow user to administer this computer".
 
-Just use the `myadmin` account. You can forget the `new-admin` account (for instance - save its password is a file readable by root only)
+Just use the `myadmin` account. You will no longer need the password to the new-admin account (so you may save it in a file readable by root only, or give it to your mom, or a friend).
 
 
 

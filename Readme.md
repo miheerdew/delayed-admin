@@ -23,7 +23,7 @@ This is the principle Delayed Admin is based upon. If who don't want the candy-b
 On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delayed-admin.conf`) and then runs the command specified in the argument as root.
 
 
-## Installation and setup {#install}
+## Installation and setup 
 
 ### MacOS
 
@@ -60,7 +60,7 @@ sudo setup.sh uninstall
 
 ## Usage
 
-If you followed the instruction in [Installation and Setup](#install), now your account must belong to the `delayed-admin` group, but not to the `admin` (or `sudo`) group. Hence you can't directly run `sudo` on any command, but you can run `sudo delayed`:
+If you followed the instruction in [Installation and Setup](#installation-and-setup), now your account must belong to the `delayed-admin` group, but not to the `admin` (or `sudo`) group. Hence you can't directly run `sudo` on any command, but you can run `sudo delayed`:
 
 ```
 sudo delayed whoami

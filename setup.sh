@@ -16,14 +16,14 @@ readonly CONFIG_FILE="/etc/delayed-admin.conf" # Must be the same as specified i
 
 function install {
     create_group "$GROUP_NAME"
-    EDITOR="tee" visudo -f "$SUDOERS_FILE" <delayed-admin.sudoers
     cp delayed.sh "$DELAYED"
     cp delayed-admin.conf "$CONFIG_FILE"
+    EDITOR="tee" visudo -f "$SUDOERS_FILE" <delayed-admin.sudoers
 }
 
 function uninstall {
-    delete_group "$GROUP_NAME"
     rm -f "$SUDOERS_FILE" "$DELAYED" "$CONFIG_FILE"
+    delete_group "$GROUP_NAME"
 }
 
 if [ "$EUID" -ne 0 ]; then

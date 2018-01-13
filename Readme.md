@@ -14,7 +14,7 @@ This project is still a prototype. Only follow these instructions if you know wh
 ### First an analogy
 Say you have a box containing an endless supply of candies, and that lately you have been eating lot more candy than you should be. After all, whenever you have an impulse to eat candy, it is so easy to just open the box and grab one. It's so hard to fight the craving! Now imagine instead that the box had a mechanism that ensures that it only opens 20min after you tell it to. Then it would be so much easier to resist the temptation of eating the candy (becuse even though the craving is there, there is nothing you can do about it, at least until the next 20min).
 
-This is the principal Delayed-Admin is based upon. It is for users who don't want the candy-box (administrator access) to instantly open whenever desired, but still not be sealed off completely. Why would one want to do this? That is because many restrictions can be set (using admin access) that cannot be undone without it.
+This is the principle Delayed-Admin is based upon. It is for users who don't want the candy-box (administrator access) to instantly open whenever desired, but still not be sealed off completely. Why would one want to do this? That is because many restrictions can be set (using admin access) that cannot be undone without it.
 
 ### The technical bit
 

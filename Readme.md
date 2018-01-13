@@ -2,12 +2,12 @@
 
 A tool for administrators to (temporarily) drop admin privileges - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!
 
-Currently it just works on my MacOS Sierra, but should be extensible to other Unix like systems too. The aim would be to create a tool like [abmindicate](http://www.pluckeye.net/abmindicate.html) for MacOS/Unix. 
+Currently it just works on my MacOS Sierra, but should be extensible to other Unix like systems too. The aim would be to create a tool like [abmindicate](http://www.pluckeye.net/abmindicate.html) for MacOS/Unix.
 
 Feel free to open a pull request if you have any suggestions/feedback.
 
 ## Warning
-This project is still a prototype. Only follow these instructions if you know what you are doing. There might be a possibility of locking yourself out of admin privilages. To prevent this, keep an additional administrators access.
+**This project is still a prototype. Only follow these instructions if you know what you are doing. There might be a possibility of locking yourself out of admin privilages. To prevent this, make another administrator account.**
 
 ## How does it work?
 
@@ -18,17 +18,39 @@ This is the principle Delayed-Admin is based upon. It is for users who don't wan
 
 ### The technical bit
 
-On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delay.conf`) and then runs the command specified in the argument as root.
+On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delayed-admin.conf`) and then runs the command specified in the argument as root.
 
 
-## Installation 
+## Installation and setup
+
+### MacOS
+
 ```
+#Install delayed-admin
 sudo setup.sh install
+
+#Add the current user to the delayed-admin group
 sudo dseditgroup -o edit -a "$USER" -t user delayed-admin
+
+#Remove the current user from the admin group
+sudo dseditgroup -o edit -d "$USER" -t user admin
+```
+
+### Linux
+
+```
+#Install delayed-admin
+sudo setup.sh install
+
+#Add the current user to the delayed-admin group
+usermod -a -G delayed-admin "$USER"
+
+#Remove the current user from the sudo group
+sudo gpasswd -d "$USER" sudo
 ```
 
 ## Uninstall
-Before you uninstall, first ensure that you have root access.
+Before you uninstall, first ensure that you have root access. Then run:
 
 ```
 sudo setup.sh uninstall
@@ -36,15 +58,14 @@ sudo setup.sh uninstall
 
 ## Usage
 
-`sudo delayed` or `sudo delayed whoami`
+If you followed the instruction in [Installation and Setup][], now your account must belong to the `delayed-admin` group, but not in the `admin` (or `sudo`) group. Hence you can't directly run `sudo` on any command, but you can run `sudo delayed`:
 
-## For OS X users
-If `myadmin` is already an Admin account (which it most probably is), then you might also need to - 
+```
+sudo delayed whoami
+# Outputs "root" after 30 sec.
 
-* Create a new admin account if there isn't one other than `myadmin`.
-* Login to the other  admin account and make `myadmin` a standard account (by un-checking "Allow user to administer this computer".
+sudo delayed
+# Get a root shell after 30 sec.
+```
 
-Just use the `myadmin` account. You will no longer need the password to the new-admin account (so you may save it in a file readable by root only, or give it to your mom, or a friend).
-
-
-
+The delay can be changed by changing the number of seconds in `/etc/delayed-admin.conf`. The delay at the beginning is 30s.

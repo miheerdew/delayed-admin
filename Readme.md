@@ -16,12 +16,18 @@ Say you have a box containing an endless supply of candies, and that lately you 
 
  Now, imagine instead that the box had a mechanism to ensures that it only opens 20 min after you tell it to. Then it would be so much easier to resist the temptation of eating the candy (becuse even though the craving is there, there is nothing you can do about it, at least until the next 20 min).
 
-This is the principle Delayed Admin is based upon. If who don't want the candy-box (administrator access) to instantly open (as you desire) and still not be sealed completely, then this project is for you.
+This is the principle Delayed Admin is based upon. It gives you a delayed access to admin privilieges (the candy-box).
 
 ### The technical bit
 
 On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delayed-admin.conf`) and then runs the command specified in the argument as root.
 
+
+# Why would anyone use this?
+
+My purpose is self-control: suppose that I want to enforce a no-screen time (to sleep early), or restrict my visits to certain addictive websites on my Laptop. Sure, I can write a script that will log me out at a certain times and use url-blacklists to prevent access to those websites, but since I am the administrator of my Laptop, I can disable those scripts and blacklists anytime.
+
+This is where delayed admin helps. I only retain a delayed adminstrator access, so that I can still have adminstrator access, but can’t use it at my whims (since I need to wait for some time between me wanting the access vs me getting it) and actions are more deliberate. In this example I would use delayed-admin to setup those scripts/blacklists but it will deter me from instantly disabling them.
 
 ## Installation and setup
 

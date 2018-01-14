@@ -23,7 +23,7 @@ This is the principle Delayed Admin is based upon. It gives you a delayed access
 On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delayed-admin.conf`) and then runs the command specified in the argument as root.
 
 
-# Why would anyone use this?
+## Why would anyone use this?
 
 My purpose is self-control: suppose that I want to enforce a no-screen time (to sleep early), or restrict my visits to certain addictive websites on my Laptop. Sure, I can write a script that will log me out at a certain times and use url-blacklists to prevent access to those websites, but since I am the administrator of my Laptop, I can disable those scripts and blacklists anytime.
 

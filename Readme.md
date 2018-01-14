@@ -71,3 +71,7 @@ sudo delayed
 ```
 
 The delay can be changed by changing the number of seconds in `/etc/delayed-admin.conf`. After you are comfortable, it is recommended to change it to 1200 (i.e. 20 min).
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT)

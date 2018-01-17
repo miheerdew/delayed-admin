@@ -25,9 +25,9 @@ On installation, a new group called `delayed-admin` is created with an entry in 
 
 ## Why would anyone use this?
 
-My purpose is self-control: suppose that I want to enforce a no-screen time (to sleep early), or restrict my visits to certain addictive websites on my Laptop. Sure, I can write a script that will log me out at a certain times and use url-blacklists to prevent access to those websites, but since I am the administrator of my Laptop, I can disable those scripts and blacklists anytime.
+ Self-control. Suppose I want to enforce a no-screen time (to sleep early), or restrict visits to certain addictive websites on my Laptop. Sure, I can write a script that will log me out at a certain times and use url-blacklists to prevent access to those websites, but being an administrator for my Laptop, I can also disable those scripts and blacklists anytime.
 
-This is where delayed admin helps. I only retain a delayed adminstrator access, so that I can still have adminstrator access, but can’t use it at my whims (since I need to wait for some time between me wanting the access vs me getting it) and actions are more deliberate. In this example I would use delayed-admin to setup those scripts/blacklists but it will deter me from instantly disabling them.
+This is where delayed admin helps. I only retain a delayed adminstrator access, so that I can still have adminstrator access, but can’t use it at my whims (since one needs to wait for some time between wanting the access and getting it) and actions are more deliberate. In this example I would use delayed-admin to setup those scripts/blacklists but it will deter me from instantly disabling them.
 
 ## Installation and setup
 

@@ -35,7 +35,7 @@ This is where delayed admin helps. I only retain a delayed adminstrator access, 
 
 ```
 #Install delayed-admin
-sudo setup.sh install
+sudo ./setup.sh install
 
 #Add the current user to the delayed-admin group
 sudo dseditgroup -o edit -a "$USER" -t user delayed-admin
@@ -48,7 +48,7 @@ sudo dseditgroup -o edit -d "$USER" -t user admin
 
 ```
 #Install delayed-admin
-sudo setup.sh install
+sudo ./setup.sh install
 
 #Add the current user to the delayed-admin group
 usermod -a -G delayed-admin "$USER"
@@ -61,7 +61,7 @@ sudo gpasswd -d "$USER" sudo
 Before you uninstall, first ensure that you have root access. Then run:
 
 ```
-sudo setup.sh uninstall
+sudo ./setup.sh uninstall
 ```
 
 ## Usage

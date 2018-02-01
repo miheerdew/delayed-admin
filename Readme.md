@@ -25,9 +25,9 @@ On installation, a new group called `delayed-admin` is created with an entry in 
 
 ## Why would anyone use this?
 
- Self-control. Suppose `Anand` runs MacOS/Linux on his laptop. He wants to enforce a no-screen time and restrict his visits to certain websites. Sure, he can install [a parental control app](http://www.noobslab.com/2017/01/timekpr-parental-control-application.html), or [change some settings](https://serverfault.com/a/139794), or use [url-blacklists](https://github.com/StevenBlack/hosts). But being an administrator for his laptop, he can also uninstall that program, remove those settings anytime.
+ Self-control. Suppose Anand runs MacOS/Linux on his laptop. He wants to enforce a no-screen time and restrict his visits to certain websites. Sure, he can install [a parental control app](http://www.noobslab.com/2017/01/timekpr-parental-control-application.html), or [change some settings](https://serverfault.com/a/139794), or use [url-blacklists](https://github.com/StevenBlack/hosts). But being an administrator for his laptop, he can also uninstall that program, remove those settings anytime.
 
-This is where delayed admin helps. `Anand` only retains a delayed adminstrator access, so that he can still do the routine system update (or any other administrator stuff), but only after waiting for a slight delay (default is 30s but he can change it to 20 min). Basically, this prevents him from taking actions at whim, allowing only deliberate ones.
+This is where delayed admin helps. Anand only retains a delayed adminstrator access, so that he can still do the routine system update (or any other administrator stuff), but only after waiting for a slight delay (default is 30s but he can change it to 20 min). Basically, this prevents him from taking actions at whim, allowing only deliberate ones.
 
 In this example he would set up those parental controls, and then use delayed admin to deter him from disabling them.
 

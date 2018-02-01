@@ -8,7 +8,7 @@ declare -i delay=$(cat "$CONFIG_FILE")
 
 CMD=${@:-/bin/bash}
 
-echo "Sleeping for $delay seconds staring from $(date '+%D %T')"
+echo "Sleeping for $delay seconds starting from $(date '+%D %T')"
 sleep $delay
 echo "Running command '$CMD'"
 

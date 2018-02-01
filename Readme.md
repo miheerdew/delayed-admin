@@ -6,6 +6,9 @@ Currently, it's tested on MacOS, but should work on Unix like systems. The aim i
 
 Feel free to open a pull request if you have any suggestions/feedback.
 
+## Tutorials
+[Tutorial for linux](https://www.ostechnix.com/delayed-admin-temporarily-drop-admin-privileges-administrators/) by SK.
+
 ## Warning
 **This project is still a prototype. Only follow these instructions if you know what you are doing. There might be a possibility of locking yourself out of admin privilages. To prevent this, make another administrator account.**
 

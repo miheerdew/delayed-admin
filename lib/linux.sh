@@ -1,4 +1,4 @@
-function gexists { gentent group "$1" &> /dev/null; }
+function gexists { getent group "$1" > /dev/null; }
 function gdel { groupdel "$1"; }
 function gadd { groupadd "$1"; }
 function add_user_to_group { usermod -a -G "$2" "$1"; }

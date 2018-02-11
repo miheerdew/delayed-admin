@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/miheerdew/delayed-admin.png)](https://travis-ci.org/miheerdew/delayed-admin)
 # Delayed Admin
 
 A tool for administrators to (temporarily) drop admin privileges - to use tools like [Parental Controls](https://support.apple.com/kb/PH18571), [Self Control](http://selfcontrolapp.com), [etc.](https://github.com/miheerdew/delayed-admin/wiki/Tools), on themselves!

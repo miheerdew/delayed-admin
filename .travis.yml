@@ -2,9 +2,8 @@ os: linux
 sudo: required
 
 before_install:
- - id
- - sudo usermod -a -G sudo $USER
- - id
- - echo "%sudo  ALL=(ALL) NOPASSWD: ALL" | EDITOR="tee" sudo visudo
+ - |
+   sudo adduser myadmin --group sudo
+   echo '%sudo ALL=(ALL:ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 script:
- - bash tests/test_delayed_admin.sh
+ - sudo -u myadmin bash ./tests/test_delayed_admin.sh

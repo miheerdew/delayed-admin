@@ -1,7 +1,9 @@
 function log {
+   local err="${2-$?}"
    local msg="$1"
-   if [ $? -gt 0 ]; then
+   if [ $err -gt 0 ]; then
      echo -e "[\xE2\x9D\x8C] $msg" 1>&2
+     exit $err
    else
      echo -e "[\xE2\x9C\x94] $msg"
    fi

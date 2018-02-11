@@ -7,8 +7,7 @@ testDelayed() {
 
   with_sudo remove_user_from_group "$USER" "$ADMIN_GROUP" || fail "Couldn't remove $USER from $ADMIN_GROUP"
 
-  sudo true && fail "Can use sudo"
-  sudo delayed true || fail "Can't use delayed"
+  check_access_is_revoked || fail "Sudo access is not revoked"
 
   with_delayed add_user_to_group "$USER" "$ADMIN_GROUP" || fail "Couldn't regain sudo access"
 
@@ -27,10 +26,14 @@ _EOF
 function with_delayed {
   local func_name=$1
   shift
-  sudo delayed <<_EOF
+  sudo /usr/local/bin/delayed <<_EOF
 `declare -f $func_name`
 $func_name $@
 _EOF
 }
 
+function check_access_is_revoked {
+ #Check if we can execute the true command (under a new login if required)
+ ! ( sudo -n true && sudo -n su $USER -c "sudo -n /bin/true" )
+}
 . tests/shunit2

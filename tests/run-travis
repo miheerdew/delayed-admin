@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -ev
+
+. ./lib/utils.sh
+readonly NEW_USER=myadmin
+
+#Allow run without password for the purpose of sudo.
+cat > ./delayed-admin.sudoers <<_EOF
+%delayed-admin ALL = NOPASSWD: /usr/local/bin/delayed
+_EOF
+
+#Create a new user
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+  sysadminctl -addUser $NEW_USER -fullName "$NEW_ADMIN" -password "secret"  -admin
+else
+  adduser $NEW_USER --disabled-password --gecos ""
+  add_user_to_group $NEW_USER $ADMIN_GROUP
+fi
+
+#Reset the sudoer-settings
+EDITOR='tee' visudo -f /etc/sudoers <<_EOF
+%$ADMIN_GROUP ALL=(ALL:ALL) NOPASSWD: ALL
+#includedir /etc/sudoers.d
+_EOF
+
+ls /etc/sudoers.d
+rm -f /etc/sudoers.d/*
+ls /etc/sudoers.d
+
+su $NEW_USER -c 'bash ./tests/test_delayed_admin.sh'

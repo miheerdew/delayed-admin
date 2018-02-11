@@ -1,9 +1,6 @@
-os: linux
+os:
+  - osx
+  - linux
 sudo: required
 
-before_install:
- - |
-   sudo adduser myadmin --group sudo
-   echo '%sudo ALL=(ALL:ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
-script:
- - sudo -u myadmin bash ./tests/test_delayed_admin.sh
+script: sudo -E ./tests/run-travis

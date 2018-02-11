@@ -1,0 +1,10 @@
+os: linux
+sudo: required
+
+before_install:
+ - id
+ - sudo usermod -a -G sudo $USER
+ - id
+ - echo "%sudo  ALL=(ALL) NOPASSWD: ALL" | EDITOR="tee" sudo visudo
+script:
+ - bash tests/test_delayed_admin.sh

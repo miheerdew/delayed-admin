@@ -1,3 +1,5 @@
+. tests/tools.sh
+
 testAbdicate(){
   sudo ./setup.sh install || fail "Delayed-admin installation failed"
   sudo ./abdicate.sh "now+1min" || fail "Abdicate failed"
@@ -7,5 +9,4 @@ testAbdicate(){
   sudo ./setup.sh uninstall || fail "Uninstallation failed"
 }
 
-. tests/tools.sh
 . tests/shunit2

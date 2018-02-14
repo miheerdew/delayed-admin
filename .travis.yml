@@ -3,7 +3,4 @@ os:
   - linux
 sudo: required
 
-before_install:
- - if [ $TRAVIS_OS_NAME = osx ]; then brew install coreutils; fi
-
 script: sudo -E ./tests/run-travis

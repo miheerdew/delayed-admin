@@ -11,7 +11,7 @@ Usage: sudo $0 TIME
 
 Explaination
 
-  TIME: Steal (i.e pause) admin access till TIME.
+  TIME: Pause admin access till TIME.
         TIME should be in a format recongnizable by the at command.
 
 This script will schedule an at command to restore admin access at time TIME.

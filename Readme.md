@@ -82,7 +82,7 @@ There are two ways to use Delayed-Admin, as a timed lock and using the unlock de
       # Sorry, user Anand is not allowed to execute as root 
       ```
       
-    - Until he wants to use his administrator access again. Then he can either run the `delayed` command, or unlock his administrator access using `admin-helper`. Of course, neither of these actions will be instantaneous.
+    - Until he wants to use his administrator access again. Then he can either run the `delayed` command, or unlock his administrator access using `admin-helper`. But neither of these actions will be instantaneous.
       
       ```      
       sudo delayed whoami

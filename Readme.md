@@ -8,7 +8,7 @@ The code has been [tested](https://travis-ci.org/miheerdew/delayed-admin) on Mac
 Feel free to open a pull request if you have any suggestions or feedback.
 
 ## Warning
-**There might be a possibility of locking yourself out of admin privileges. To prevent this, keep another administrator account which you can access if things go wrong.** 
+**It is possible to lock yourself out of admin privileges while you play around with this project. To prevent this, keep another administrator account which you can access if things go wrong.** 
 
 ## Tutorials
 [Tutorial for linux](https://www.ostechnix.com/delayed-admin-temporarily-drop-admin-privileges-administrators/) by SK.
@@ -18,20 +18,20 @@ Feel free to open a pull request if you have any suggestions or feedback.
 ### First an analogy
 Say you have a box containing an endless supply of candies, and that lately you have been eating lot more candy than you should be. After all, whenever you have an impulse to eat candy, it is so easy to just open the box and grab one. It's so hard to fight the craving!
 
- Now, imagine instead that the box had a mechanism to ensure that it only opens 20 min after you tell it to. Then it would be so much easier to resist the temptation of eating the candy (becuse even though the craving is there, there is nothing you can do about it, at least until the next 20 min).
+ Now, imagine instead that the box had a mechanism to ensure that it only opens 20 min after you tell it to. Then it would be so much easier to resist the temptation of eating the candy (because even though the craving is there, there is nothing you can do about it, at least until the next 20 min).
 
-This is the principle Delayed Admin is based upon. It gives you a delayed access to admin privilieges (the candy-box).
+This is the principle Delayed Admin is based upon. It gives you a delayed access to admin privileges (the candy-box).
 
 ### The technical bit
 
-On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delayed-admin.conf`) and then runs the command specified in the argument as root.
+On installation, a new group called `delayed-admin` is created with an entry in the sudoers file allowing anyone in the `delayed-admin` group to run the script `/usr/local/bin/delayed` as root. The `delayed` script simply sleeps for some amount of time (as specified in `/etc/delayed-admin.conf`) and runs the command in its argument as root.
 
 
 ## Why would anyone use this?
 
  Self-control. Suppose Anand runs MacOS/Linux on his laptop. He wants to enforce a no-screen time and restrict his visits to certain websites. Sure, he can install [a parental control app](http://www.noobslab.com/2017/01/timekpr-parental-control-application.html), or [change some settings](https://serverfault.com/a/139794), or use [url-blacklists](https://github.com/StevenBlack/hosts). But being an administrator for his laptop, he can also uninstall that program, or remove those settings anytime.
 
-This is where Delayed Admin would help. Anand only retains a delayed adminstrator access, so that he can still do the routine system update (or any other administrator stuff that he wants), but only after waiting for some time (by default it is 30s but he can change it to 20 min). Basically, this prevents him from taking actions at whim, allowing only deliberate ones.
+This is where Delayed Admin would help. Anand only retains a delayed administrator access, so that he can still do the routine system update (or any other administrator stuff that he wants), but only after waiting for some time (by default it is 30s but he can change it to 20 min). Basically, this prevents him from taking actions at whim, allowing only deliberate ones.
 
 In this example he would set up those parental controls, and then use `delayed` to deter him from disabling them.
 
@@ -52,49 +52,52 @@ This will go through a couple of actions. Ensure that the installation was succe
 
 There are two ways to use Delayed-Admin, as a timed lock and using the unlock delay. 
 
-1. **Timed Lock:** This will pause adminstrator access till the specified period of time. 
+1. **Timed Lock:** This will pause administrator access till the specified period of time. 
 
-	For instance, if Anand wants to forgo his adminstrator access for the next 2 hours, he can run:
+	For instance, if Anand wants to forgo his administrator access for the next 2 hours, he can run:
 	
 	```
 	sudo ./abdicate.sh "now+2hr"
 	```
 	
-	He will now be an ordinary user for the next 2 hours (he might have to log off for changes to completely take effect), after which he will regain administrator access. The time argument is the time at which the adminstrator access should be reagined (see `man at` for the time format). 
+	He will now be an ordinary user for the next 2 hours (he might have to log off for changes to completely take effect), after which he will regain administrator access. The time argument is the time at which the administrator access should be regained (see `man at` for the time format). 
 	
-2. **Unlock Delay:** This is a slighlty more complicated concept, but it is the heart of Delayed-Admin. The [analogy](#first-an-analogy) describes this, but you  can think of it as back-door to admin privileges which requires a delay to open.
+2. **Unlock Delay:** This is a slightly more complicated concept, but it is at the heart of Delayed-Admin. The [analogy](#first-an-analogy) describes this, and you also can think of it as back door (to admin privileges) which requires a delay to open.
 
-   To see the usage, let us take a scenario. Suppose Anand has already set up a program that logs him out between 10 PM-6 AM. Now, he doesn't wants to use his adminstrator access impulsively so he [installs](#install) Delayed-Admin. After this he should:
+   To see the usage, let us take a scenario. Suppose Anand has already set up a program that logs him out between 10 PM-6 AM. Now, he doesn't wants to use his administrator access impulsively so he [installs](#install) Delayed-Admin. After this he should:
    
-    - Add himself to the `delayed-admin` group
+    - Lock his administrator access
       
       ```
-      # On Ubuntu: 
-      sudo usermod -a -G delayed-admin "$USER"
-      # On MacOS:
-      sudo dseditgroup -o edit -a "$USER" -t user delayed-admin
+      ./admin-helper.sh lock
       ```
-    - Remove himself from the `admin` (or `sudo`) group
-
-      ```
-      # On Ubuntu: 
-      sudo gpasswd -d "$USER" sudo
-      # On MacOS:
-      sudo dseditgroup -o edit -d "$USER" -t user admin
-      ```
-    - That is it.., until he wants to use his adminstrator access again:
+      
+      That is it. But depending on your OS, you might have to log out for changes to completely take effect. Now he doesn't have sudo access.
       
       ```
-      # # Does not work: 
-      # sudo whoami
-      # # Sorry, user Anand is not allowed to execute as root
+      ./admin-helper.sh status
+      # Admin access is locked
       
+      sudo whoami
+      # Sorry, user Anand is not allowed to execute as root 
+      ```
+      
+    - Until he wants to use his administrator access again. Then he can either run the `delayed` command, or unlock his administrator access using `admin-helper`. Of course, neither of these actions will be instantaneous.
+      
+      ```      
       sudo delayed whoami
       # Wait for 30s before returning 
       # root
       
       sudo delayed
       # Wait for 30s before returning a root shell
+      
+      ./admin-helper.sh unlock
+      # Wait for 30s before unlocking
+      
+      # Now this works.
+      sudo whoami
+      # root
       ```    
       He can, of course, change the delay to a larger value by editing the file `/etc/delayed-admin.conf` 
       
@@ -102,7 +105,7 @@ There are two ways to use Delayed-Admin, as a timed lock and using the unlock de
 
 ### Uninstall
 
-First, add youself back the `admin` (or `sudo`) group if you had removed yourself. Then to undo the changes made during the install step, run:
+First, unlock yourself if your admin-access is locked. Then, to undo the changes made during the install step, run:
 
 ```
 sudo ./setup.sh install

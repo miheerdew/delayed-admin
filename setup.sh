@@ -34,8 +34,9 @@ function delete_group {
 function install {
     create_group "$GROUP_NAME"
     cp delayed.sh "$DELAYED"
+    log "Copied $DELAYED"
     cp delayed-admin.conf "$CONFIG_FILE"
-    log "Copied $DELAYED and $CONFIG_FILE"
+    log "Copied $CONFIG_FILE"
     EDITOR="tee" visudo -f "$SUDOERS_FILE" <delayed-admin.sudoers
     log "Copied above to sudoers file $SUDOERS_FILE"
 }
@@ -49,8 +50,7 @@ function uninstall {
 }
 
 if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root"
-    exit
+    die "Please run as root"
 fi
 
 case $1 in
@@ -63,7 +63,6 @@ case $1 in
         log "Uninstall successful"
         ;;
     *)
-        echo "Usage: sudo $0 (install|uninstall)"
-        exit
+        die "Usage: sudo $0 (install|uninstall)"
         ;;
 esac

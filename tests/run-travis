@@ -29,3 +29,4 @@ rm -f /etc/sudoers.d/*
 ls /etc/sudoers.d
 
 su $NEW_USER -c 'bash ./tests/test_delayed_admin.sh'
+su $NEW_USER -c 'bash ./tests/test_abdicate.sh'

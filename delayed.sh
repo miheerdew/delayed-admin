@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e -u
+set -e
 
 CONFIG_FILE='/etc/delayed-admin.conf'
 
@@ -9,7 +9,9 @@ declare -i delay=$(cat "$CONFIG_FILE")
 CMD=${@:-/bin/bash}
 
 echo "Sleeping for $delay seconds starting from $(date '+%D %T')"
-sleep $delay
+if [[ $delay -gt 0 ]]; then
+    sleep "$delay"
+fi
 echo "Running command '$CMD'"
 
 $CMD

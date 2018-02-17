@@ -108,7 +108,7 @@ There are two ways to use Delayed-Admin, as a timed lock and using the unlock de
 First, unlock yourself if your admin-access is locked. Then, to undo the changes made during the install step, run:
 
 ```
-sudo ./setup.sh install
+sudo ./setup.sh uninstall
 ```
 
 ## License

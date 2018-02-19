@@ -18,7 +18,7 @@ Feel free to open a pull request if you have any suggestions or feedback.
 ### First an analogy
 Say you have a box containing an endless supply of candies, and that lately you have been eating lot more candy than you should be. After all, whenever you have an impulse to eat candy, it is so easy to just open the box and grab one. It's so hard to fight the craving!
 
- Now, imagine instead that the box had a mechanism to ensure that it only opens 20 min after you tell it to. Then it would be so much easier to resist the temptation of eating the candy (because even though the craving is there, there is nothing you can do about it, at least until the next 20 min).
+ Now, imagine instead that the box had a mechanism to ensure that it only opened 20 min after you tell it to. Then it would be much easier to resist the temptation of eating the candy, because even though the craving is there, there is nothing you can do about it, at least for the next 20 minutes.
 
 This is the principle Delayed Admin is based upon. It gives you a delayed access to admin privileges (the candy-box).
 
@@ -31,9 +31,9 @@ On installation, a new group called `delayed-admin` is created with an entry in 
 
  Self-control. Suppose Anand runs MacOS/Linux on his laptop. He wants to enforce a no-screen time and restrict his visits to certain websites. Sure, he can install [a parental control app](http://www.noobslab.com/2017/01/timekpr-parental-control-application.html), or [change some settings](https://serverfault.com/a/139794), or use [url-blacklists](https://github.com/StevenBlack/hosts). But being an administrator for his laptop, he can also uninstall that program, or remove those settings anytime.
 
-This is where Delayed Admin would help. Anand only retains a delayed administrator access, so that he can still do the routine system update (or any other administrator stuff that he wants), but only after waiting for some time (by default it is 30s but he can change it to 20 min). Basically, this prevents him from taking actions at whim, allowing only deliberate ones.
+This is where Delayed Admin would help. Anand only retains a delayed administrator access so that he can still do the routine system update or any other administrator stuff that he wants, but only after waiting for 20 minutes. Basically, this deters him from taking administator actions at whim, allowing only for deliberate ones.
 
-In this example he would set up those parental controls, and then use `delayed` to deter him from disabling them.
+In this example he would set up those parental controls, and then use `delayed` to deter him from disabling them. 
 
 ## How to use it?
 
@@ -50,7 +50,7 @@ This will go through a couple of actions. Ensure that the installation was succe
 
 ### Usage
 
-There are two ways to use Delayed-Admin, as a timed lock and using the unlock delay. 
+There are two ways to use Delayed-Admin: using either the timed lock or the unlock delay. 
 
 1. **Timed Lock:** This will pause administrator access till the specified period of time. 
 
@@ -60,9 +60,11 @@ There are two ways to use Delayed-Admin, as a timed lock and using the unlock de
 	sudo ./abdicate.sh "now+2hr"
 	```
 	
-	He will now be an ordinary user for the next 2 hours (he might have to log off for changes to completely take effect), after which he will regain administrator access. The time argument is the time at which the administrator access should be regained (see `man at` for the time format). 
+	He will now be an ordinary user for the next 2 hours, after which he will regain administrator access. The time argument is the time at which the administrator access should be regained. 
 	
-2. **Unlock Delay:** This is a slightly more complicated concept, but it is at the heart of Delayed-Admin. The [analogy](#first-an-analogy) describes this, and you also can think of it as back door (to admin privileges) which requires a delay to open.
+	See `man at` for the syntax permitted by the last argument. You might have to log out for changes to completely take effect. 
+	
+2. **Unlock Delay:** This is a slightly more complicated concept, but it is at the heart of Delayed-Admin. The [analogy](#first-an-analogy) describes this, and you also can think of it as back door to admin privileges, that requires a delay to open.
 
    To see the usage, let us take a scenario. Suppose Anand has already set up a program that logs him out between 10 PM-6 AM. Now, he doesn't wants to use his administrator access impulsively so he [installs](#install) Delayed-Admin. After this he should:
    

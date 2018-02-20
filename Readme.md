@@ -5,7 +5,7 @@ A tool for administrators to (temporarily) drop admin privileges - to use tools 
 
 The code has been [tested](https://travis-ci.org/miheerdew/delayed-admin) on MacOS and Ubuntu, but it should work for other unix like systems too. 
 
-Feel free to open a pull request if you have any suggestions or feedback.
+Feel free to open a new issue if you have any suggestions, questions or feedback!
 
 ## Warning
 **It is possible to lock yourself out of admin privileges while you play around with this project. To prevent this, keep another administrator account which you can access if things go wrong.** 

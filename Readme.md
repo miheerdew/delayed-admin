@@ -8,7 +8,7 @@ The code has been [tested](https://travis-ci.org/miheerdew/delayed-admin) on Mac
 Feel free to open a new issue if you have any suggestions, questions or feedback!
 
 ## Warning
-**It is possible to lock yourself out of admin privileges while you play around with this project. To prevent this, keep another administrator account which you can access if things go wrong.** 
+**It is possible to lock yourself out of admin privileges while you play around with this project. To prevent this, keep another administrator account which you can access if things go wrong.** (BTW, if you wish to lock that password up somewhere online see [Lockbox](https://lockbox.pluckeye.net/help)).
 
 ## Tutorials
 [Tutorial for linux](https://www.ostechnix.com/delayed-admin-temporarily-drop-admin-privileges-administrators/) by SK.

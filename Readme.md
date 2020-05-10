@@ -62,7 +62,7 @@ There are two ways to use Delayed-Admin: using either the timed lock or the unlo
 	
 	He will now be an ordinary user for the next 2 hours, after which he will regain administrator access. The time argument is the time at which the administrator access should be regained. 
 	
-	See `man at` for the syntax permitted by the last argument. You might have to log out for changes to completely take effect. 
+	See `man at` for the syntax permitted by the last argument (e.g on Fedora you might have to say `"now + 2 hour"`).  You might have to log out for changes to completely take effect. 
 	
 2. **Unlock Delay:** This is a slightly more complicated concept, but it is at the heart of Delayed-Admin. The [analogy](#first-an-analogy) describes this, and you also can think of it as back door to admin privileges, that requires a delay to open.
 

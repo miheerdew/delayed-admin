@@ -12,7 +12,7 @@ function admin_group() {
     ubuntu|debian)
       echo "sudo"
       ;;
-    centos|fedora|rhel)
+    centos|fedora|rhel|arch)
       echo "wheel"
       ;;
   esac

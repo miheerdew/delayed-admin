@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make test script executable
+        run: chmod +x ./tests/run-travis
+
+      - name: Run tests
+        run: ./tests/run-travis

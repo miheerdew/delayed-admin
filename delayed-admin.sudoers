@@ -1,1 +1,1 @@
-%delayed-admin ALL = /usr/local/bin/delayed
+%delayed-admin ALL = NOPASSWD: /usr/local/bin/delayed
